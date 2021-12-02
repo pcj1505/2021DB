@@ -1,0 +1,14 @@
+CREATE TABLE  개발자 (
+    개발자번호 INT NOT NULL,
+    이름 VARCHAR(20) ,
+    소속 VARCHAR(20),
+    
+	
+    PRIMARY KEY(개발자 번호)    
+);
+
+INSERT INTO 개발자 VALUES('001','김가을','RED');
+INSERT INTO 개발자 VALUES('002','김진수','BULE');
+INSERT INTO 개발자 VALUES('003','김해민', 'GREEN');
+INSERT INTO 개발자 VALUES('004','정소화', 'YELLO');
+INSERT INTO 개발자 VALUES('005','김선우', 'WHITE');

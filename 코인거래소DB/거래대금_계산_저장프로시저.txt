@@ -1,0 +1,27 @@
+-- ’회원‘이 코인을 거래하면 해당 코인의 가격*수량 한 금액을 ’코인‘ 테이블 거래대금에 가산하는 기능 수행
+
+CREATE OR REPLACE PROCEDURE COIN_CO
+AS
+COIN_Cost NUMBER; -- 코인가격
+COIN_Num NUMBER; -- 코인수량
+COIN_Name VARCHAR(20); -- 코인이름
+COIN_JDK VARCHAR(20); -- 거래소명
+COIN_DN INT; -- 개발자번호
+COIN_Trade NUMBER; --거래대금
+
+CURSOR C IS SELECT 코인이름, SUM(코인가격*매매수량) FROM 매매내역 group by 코인이름;
+
+BEGIN
+  OPEN C;
+  LOOP
+      FETCH C INTO COIN_Name,  COIN_Trade;
+      EXIT WHEN C%NOTFOUND; -- 데이터가 없으면 LOOP 종료 
+
+      BEGIN
+      UPDATE 코인 SET 거래대금 = COIN_Trade WHERE 코인이름=COIN_Name ;
+      END;
+END LOOP;
+CLOSE C;
+END;
+SELECT 코인이름, SUM(코인가격*매매수량) FROM 매매내역 group by 코인이름;
+Execute coin_co();

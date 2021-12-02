@@ -1,0 +1,35 @@
+CREATE TABLE 매매내역(
+ 거래번호 INT NOT NULL,
+ 코인이름 VARCHAR(20),
+ 회원아이디 VARCHAR(20), 
+ 거래소명 VARCHAR(20), 
+ 개발자번호 INT, 
+ 코인가격 INT,
+ 매매수량 INT,
+ 매매 NCHAR(10),
+ 거래 DATE,
+ 
+ PRIMARY KEY(거래번호),
+ FOREIGN KEY(회원아이디) REFERENCES 회원(회원아이디),
+ FOREIGN KEY(코인이름,거래소명,개발자번호) REFERENCES 코인(코인이름,거래소명, 개발자번호)
+);
+
+
+alter table 회원 ADD 코인개수 number(10) DEFAULT 0;
+
+
+INSERT INTO 매매내역 VALUES(1, '비트코인', 'pcj', 'JDK', 1, 70000000, 1, '매수', '2021-12-02');
+INSERT INTO 매매내역 VALUES(2. '에이다', 'kth', 'JDK', 2, 1960, 3, '매수','2021-11-12');
+INSERT INTO 매매내역 VALUES(3, '페이코인', 'kdi', 'JDK', 3, 1235, 12, '매수','2020-02-02');
+INSERT INTO 매매내역 VALUES(4,'칠리즈', 'dke23', 'JDK', 4, 350, 310, '매수','2020-12-24');
+INSERT INTO 매매내역 VALUES(5,'이오스', 'coin123', 'JDK', 5, 6835, 150, '매수','2020-05-02');
+INSERT INTO 매매내역 VALUES(6,'테조스', 'doge77', 'JDK', 1, 4200, 72, '매수','2021-08-18');
+INSERT INTO 매매내역 VALUES(7,'네오', 'tothemoon', 'JDK', 4, 63000, 8, '매수','2021-08-21');
+INSERT INTO 매매내역 VALUES(8,'스와이프', 'showme918', 'JDK', 5, 2375, 39, '매수','2021-06-17');
+INSERT INTO 매매내역 VALUES(9,'도지코인', '816nono', 'JDK', 1, 435, 432, '매수','2021-09-27');
+INSERT INTO 매매내역 VALUES(10,'이더리움', 'jjangjjang12', 'JDK', 2, 5280000, 2, '매수','2021-06-12');
+INSERT INTO 매매내역 VALUES(11,'칠리즈', 'pcj', 'JDK', 4, 350, 127, '매수','2021-02-20');
+INSERT INTO 매매내역 VALUES(12,'테조스', 'kdi', 'JDK', 1, 4200, 42, '매수','2021-10-02');
+INSERT INTO 매매내역 VALUES(13,'도지코인', 'kth', 'JDK', 1, 435, 10, '매수','2021-07-22');
+INSERT INTO 매매내역 VALUES(14,'스와이프', 'dke23', 'JDK', 5, 2375, 51, '매수','2021-12-02');
+INSERT INTO 매매내역 VALUES(15, '이오스', 'showme918', 'JDK', 5, 6835, 30, '매수','2021-12-02');

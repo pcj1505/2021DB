@@ -1,0 +1,8 @@
+CREATE TABLE 거래소 (
+	거래소명  VARCHAR(20)	 NOT NULL,
+	코인개수   INT	 NOT NULL,
+	회원수	  INT,
+	PRIMARY KEY(거래소명)
+);
+
+INSERT INTO 거래소 VALUES ('JDK',10,0);
