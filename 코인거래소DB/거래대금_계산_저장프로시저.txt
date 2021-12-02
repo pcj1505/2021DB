@@ -23,5 +23,5 @@ BEGIN
 END LOOP;
 CLOSE C;
 END;
-SELECT 코인이름, SUM(코인가격*매매수량) FROM 매매내역 group by 코인이름;
+
 Execute coin_co();

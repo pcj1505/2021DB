@@ -7,7 +7,7 @@ CREATE TABLE 매매내역(
  코인가격 INT,
  매매수량 INT,
  매매 NCHAR(10),
- 거래 DATE,
+ 거래일시 DATE,
  
  PRIMARY KEY(거래번호),
  FOREIGN KEY(회원아이디) REFERENCES 회원(회원아이디),
