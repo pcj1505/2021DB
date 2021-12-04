@@ -1,6 +1,6 @@
 --'보유코인‘ 테이블을 참고하여 한 회원이 가진 코인 수를 중복을 제외하고 계산해 ’회원‘ 테이블에 입력하는 기능 수행 
 
-CREATE OR REPLACE PROCEDURE COIN_Cursor 
+create or replace PROCEDURE COIN_Cursor 
 AS
 COIN_Name NUMBER; -- 코인개수
 COIN_ID VARCHAR(20); --회원 아이디
@@ -20,4 +20,5 @@ BEGIN
 
   END LOOP;
   CLOSE C;
+  commit;
   end;

@@ -1,0 +1,25 @@
+-- 거래소에 회원 수 저장 프로시저
+create or replace PROCEDURE Coin_UserCount 
+AS
+
+
+Counter NUMBER ; -- 회원수 카운터
+
+COIN_ID VARCHAR(20); -- 회원아이디
+
+CURSOR C IS SELECT 회원아이디 FROM 회원;
+BEGIN
+OPEN C;
+Counter :=0;
+LOOP
+
+FETCH C INTO COIN_ID;
+
+
+EXIT WHEN C %NOTFOUND;
+Counter := Counter+1;
+END LOOP;
+
+UPDATE 거래소 SET 회원수=Counter WHERE 거래소명 ='JDK';
+
+END ;

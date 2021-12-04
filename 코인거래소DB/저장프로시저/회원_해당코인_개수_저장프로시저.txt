@@ -1,0 +1,18 @@
+-- 매도나 매수할때 회원이 해당 코인을 가지고 있는 수
+create or replace PROCEDURE BUYSELL
+(user_id IN VARCHAR,
+this_coin IN VARCHAR,
+have OUT NUMBER)
+AS
+counter INT;
+BEGIN
+counter := 0;
+    select count(*) into counter from 보유코인 
+    where 회원아이디=user_id and 코인이름=this_coin;
+    if counter = 0 then
+    have := 0;
+    else
+    select 보유개수 into have from 보유코인
+    where 회원아이디=user_id and 코인이름=this_coin;
+    end if;
+end;

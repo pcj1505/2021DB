@@ -1,0 +1,10 @@
+-- 회원등록 후 회원 +1
+create or replace TRIGGER T_UserAdd
+AFTER INSERT
+ON 회원
+FOR EACH ROW
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE('회원등록되었습니다.');
+UPDATE 거래소 SET 회원수= 회원수+1  WHERE 거래소명='JDK';
+END;

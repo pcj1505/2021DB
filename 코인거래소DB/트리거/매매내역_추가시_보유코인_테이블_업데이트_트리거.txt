@@ -1,0 +1,10 @@
+-- 매매내역 추가시 보유코인 테이블 업뎃
+create or replace TRIGGER T_userCoinUPDATE
+AFTER INSERT
+ON 매매내역
+
+BEGIN
+
+COIN_get;
+
+END;

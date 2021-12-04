@@ -1,0 +1,22 @@
+create or replace PROCEDURE COIN_Get
+AS
+   COIN_ID VARCHAR(20); --회원아이디
+   COIN_Name VARCHAR(20); --코인이름
+   COIN_JDK VARCHAR(20); --거리소명
+   COIN_DN INT; --개발자번호
+   COIN_Num INT; --보유개수
+   CURSOR C IS SELECT 회원아이디, 코인이름, 거래소명, 개발자번호, SUM(매매수량) FROM 매매내역 group by 회원아이디, 코인이름, 거래소명, 개발자번호;
+
+BEGIN
+DELETE FROM 보유코인;
+   OPEN C;
+   LOOP
+      FETCH C INTO COIN_ID, COIN_Name, COIN_JDK, COIN_DN, COIN_Num;
+      EXIT WHEN C%NOTFOUND;
+      BEGIN	
+		   INSERT INTO 보유코인 VALUES(COIN_ID, COIN_Name, COIN_JDK, COIN_DN, COIN_Num);
+
+      END;
+   END LOOP;
+   CLOSE C;
+END;

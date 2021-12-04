@@ -1,0 +1,8 @@
+-- 회원 등록 전에 거래소 회원수 업뎃
+create or replace TRIGGER T_transupdate
+before INSERT
+ON 회원
+
+BEGIN
+coin_usercount;
+END;

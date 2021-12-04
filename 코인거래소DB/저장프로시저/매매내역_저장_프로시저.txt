@@ -1,0 +1,25 @@
+-- 매매내역에 매수 매도 추가하는 저장 프로시저
+
+create or replace PROCEDURE button_chs
+(user_id in varchar,
+buy IN VARCHAR,
+coin_name IN VARCHAR,
+quantity IN number
+)
+AS
+counter int;
+trans varchar(20);
+dn int;
+coin_pr int;
+BEGIN
+counter:=0;
+select 거래소명 , 개발자번호 , 현재가격 into trans, dn, coin_pr from 코인 where 코인이름=coin_name;
+select count(*) into counter from 매매내역; 
+    if counter > 0 then 
+    counter:= counter+1;
+    insert into 매매내역 values (counter, coin_name, user_id, trans, dn, coin_pr, quantity, buy, sysdate);
+    else
+        insert into 매매내역 values (counter, coin_name, user_id, trans, dn, coin_pr, quantity, buy, sysdate);
+    end if;
+    commit;
+end;

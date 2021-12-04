@@ -1,6 +1,6 @@
 -- ’회원‘이 코인을 거래하면 해당 코인의 가격*수량 한 금액을 ’코인‘ 테이블 거래대금에 가산하는 기능 수행
 
-CREATE OR REPLACE PROCEDURE COIN_CO
+create or replace PROCEDURE COIN_CO
 AS
 COIN_Cost NUMBER; -- 코인가격
 COIN_Num NUMBER; -- 코인수량
@@ -23,5 +23,3 @@ BEGIN
 END LOOP;
 CLOSE C;
 END;
-
-Execute coin_co();
