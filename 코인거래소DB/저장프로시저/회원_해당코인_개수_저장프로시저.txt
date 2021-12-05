@@ -1,4 +1,4 @@
--- 매도나 매수할때 회원이 해당 코인을 가지고 있는 수
+-- ’보유코인‘ 테이블을 참고하여 GUI에 회원이 해당 코인을 몇개 보유하고 있는지 보여주는 기능 수행
 create or replace PROCEDURE BUYSELL
 (user_id IN VARCHAR,
 this_coin IN VARCHAR,

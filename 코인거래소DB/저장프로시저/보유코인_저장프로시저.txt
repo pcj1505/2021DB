@@ -1,3 +1,4 @@
+-- '매매내역' 테이블을 참고하여 '보유코인' 테이블에 보유개수를 입력하는 기능 수행
 create or replace PROCEDURE COIN_Get
 AS
    COIN_ID VARCHAR(20); --회원아이디
@@ -13,10 +14,13 @@ DELETE FROM 보유코인;
    LOOP
       FETCH C INTO COIN_ID, COIN_Name, COIN_JDK, COIN_DN, COIN_Num;
       EXIT WHEN C%NOTFOUND;
-      BEGIN	
-		   INSERT INTO 보유코인 VALUES(COIN_ID, COIN_Name, COIN_JDK, COIN_DN, COIN_Num);
-
-      END;
+      BEGIN   
+      if coin_num = 0 then
+      continue;
+      else
+         INSERT INTO 보유코인 VALUES(COIN_ID, COIN_Name, COIN_JDK, COIN_DN, COIN_Num);
+      end if;
+      end;
    END LOOP;
    CLOSE C;
 END;

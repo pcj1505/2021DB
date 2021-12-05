@@ -1,4 +1,4 @@
--- 매매내역에 매수 매도 추가하는 저장 프로시저
+GUI에서 ’매수‘, ’매도‘ 버튼을 눌렀을 때 ’매매내역‘ 테이블에 ’매수‘, ’매도‘ 데이터가 추가되게 하는 저장 프로시저
 
 create or replace PROCEDURE button_chs
 (user_id in varchar,
